@@ -1,82 +1,49 @@
+:root {
+    --menu-bg-color: #6C63FF;
+    --menu-section-bg-color: #3F3D56;
+    --input-focus-color: #28a745;
+}
 
-.navbar-container {
-    position: fixed;
-    top: 0;
-    right: 0;
+.menu {
+    background-color: var(--menu-bg-color);
     width: 100%;
-    z-index: 999;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  .navbar-logo {
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.3s;
-  }
-  
-  .navbar-logo:hover {
-    transform: scale(1.05);
-  }
-  
-  .navbar-links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-links a {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .navbar-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-  
+    justify-content: space-around;
+    padding: 10px 0;
+    margin-top: 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
 
-  body.dark-mode .navbar-container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  body.dark-mode .navbar-links a {
-    color: #fff;
-  }
-  body.dark-mode .navbar-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
+.menu-section {
+    background-color: var(--menu-section-bg-color);
+    padding: 15px 40px;
+    border-radius: 15px;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 10px;
+}
 
-  @media (max-width: 600px) {
-    .navbar-container {
-      padding: 0 10px;
-      height: 50px;
-    }
-    .navbar-logo {
-      font-size: 18px;
-    }
-    .navbar-links a {
-      font-size: 14px;
-      padding: 6px 8px;
-    }
-  }
-  
+.menu-section a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-section a:hover {
+    color: var(--input-focus-color);
+}
+
+/* حالت تاریک */
+body.dark-mode .menu {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+body.dark-mode .menu-section {
+    background-color: #333;
+}
+
+body.dark-mode .menu-section a:hover {
+    color: #555;
+}

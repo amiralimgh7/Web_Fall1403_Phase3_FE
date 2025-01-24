@@ -1,37 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./navbar.css"; // همان فایل مشترک
+import { Link, useNavigate } from "react-router-dom";
+import "./navbar.css";
 
-function DesignerNavbar() {
+const DesignerNavbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+
+    navigate("/signup");
+  };
+
   return (
-    <div className="navbar-container">
-      {/* لوگو/عنوان */}
-      <Link className="navbar-logo" to="/designer">
-        <span className="material-icons">design_services</span>
-        سوال‌پیچ (طراح)
-      </Link>
-
-      {/* لینک‌ها */}
-      <div className="navbar-links">
-        <Link to="/designer/questions">
-          <span className="material-icons">article</span>
-          سوالات
-        </Link>
-        <Link to="/designer/categories">
-          <span className="material-icons">folder</span>
-          دسته‌بندی‌ها
-        </Link>
-        <Link to="/designer/profile">
-          <span className="material-icons">person</span>
-          پروفایل
-        </Link>
-        <Link to="/login">
-          <span className="material-icons">logout</span>
-          خروج
-        </Link>
+    <nav className="menu">
+      <div className="menu-section">
+        <Link to="/designer/profile" id="profile-link">پروفایل</Link>
       </div>
-    </div>
+      <div className="menu-section">
+        <Link to="/designer/categories" id="category-link">مدیریت دسته‌بندی‌ها</Link>
+      </div>
+      <div className="menu-section">
+        <Link to="/designer/questions" id="questions-link">مدیریت سوالات</Link>
+      </div>
+      <div className="menu-section">
+        {/* دکمه خروج */}
+        <button id="logout-button" onClick={handleLogout}>
+          خروج
+        </button>
+      </div>
+    </nav>
   );
-}
+};
 
 export default DesignerNavbar;

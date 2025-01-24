@@ -1,41 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
-function NavbarPlayer() {
-  return (
-    <div className="navbar-container">
-      {/* لوگو/عنوان */}
-      <Link className="navbar-logo" to="/player">
-        <span className="material-icons">sports_esports</span>
-        سوال‌پیچ (بازیکن)
-      </Link>
+const NavbarPlayer = () => {
+  const navigate = useNavigate();
 
-      {/* لینک‌ها */}
-      <div className="navbar-links">
-        <Link to="/player/questions">
-          <span className="material-icons">help</span>
-          سوالات
-        </Link>
-        <Link to="/player/leaderboard">
-          <span className="material-icons">emoji_events</span>
-          امتیازات
-        </Link>
-        <Link to="/feed">
-          <span className="material-icons">rss_feed</span>
-          فید
-        </Link>
-        <Link to="/player/profile">
-          <span className="material-icons">account_circle</span>
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+    navigate("/");
+  };
+
+  return (
+    <nav className="menu">
+      <div className="menu-section">
+        <Link to="/player/profile/main" id="profile-link">
           پروفایل
         </Link>
-        <Link to="/login">
-          <span className="material-icons">logout</span>
-          خروج
+      </div>
+      <div className="menu-section">
+        <Link to="/player/questions" id="questions-link">
+          سوالات
         </Link>
       </div>
-    </div>
+       <div className="menu-section">
+        <Link to="/feed">فید سوالات</Link>
+      </div>
+      <div className="menu-section">
+        <Link to="/player/leaderboard" id="leaderboard-link">
+          جدول امتیازات
+        </Link>
+      </div>
+   
+      <div className="menu-section">
+        <Link to="/player/search" id="search-link">
+          جستجو
+        </Link>
+      </div>
+      <div className="menu-section logout">
+        <button onClick={handleLogout} id="logout-button">
+          خروج
+        </button>
+      </div>
+    </nav>
   );
-}
+};
 
 export default NavbarPlayer;

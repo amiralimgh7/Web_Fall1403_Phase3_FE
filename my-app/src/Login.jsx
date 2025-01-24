@@ -32,7 +32,10 @@ const Login = () => {
       const formBody = new URLSearchParams({
         username: username,
         password: password,
+        personType: role.toUpperCase(),
       }).toString();
+      
+      console.log(formBody);
 
       // ارسال درخواست لاگین به سرور
       const response = await fetch("http://localhost:8080/signin", {
@@ -42,6 +45,7 @@ const Login = () => {
         },
         body: formBody,
       });
+
 
       const result = await response.json();
 
@@ -65,6 +69,8 @@ const Login = () => {
         }
       } else if (result.responseHeader === "USERNAME_NOT_EXISTS") {
         setError("نام کاربری وجود ندارد.");
+      } else if (result.responseHeader === "WRONG_ROLE") {
+        setError("نقش اشتباه است.");
       } else if (result.responseHeader === "WRONG_PASSWORD") {
         setError("رمز عبور اشتباه است.");
       } else {

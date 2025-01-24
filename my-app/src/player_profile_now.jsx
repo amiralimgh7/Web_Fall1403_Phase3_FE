@@ -58,7 +58,6 @@ const DesignerProfile = () => {
             <p>نام کاربری: {profile.username}</p>
             <p>تعداد دنبال‌کنندگان: {profile.follower_count}</p>
             <p>تعداد دنبال‌شده‌ها: {profile.question_count}</p>
-            <p>تعداد سوالات پاسخ داده شده: {profile.answered_count}</p>
             <p>امتیاز کل: {profile.score}</p>
           </>
         ) : (
